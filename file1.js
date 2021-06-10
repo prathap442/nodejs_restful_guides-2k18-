@@ -21,6 +21,7 @@ const p = new Promise((resolve, reject)=>{
     },2000)
 })
 
+//conversion of the above callback HEll(which is nothing but looking like nested)
 p
   .then((result)=>{
     console.log(result)
