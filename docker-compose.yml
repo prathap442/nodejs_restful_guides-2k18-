@@ -1,0 +1,37 @@
+version: "3.7"
+services:
+  api_gateway:
+    container_name: async-demo
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/usr/src/
+    ports:
+      - "2525:2525"
+      - "5858:5858"
+    links:
+      - mongo_db_nodepracs
+      - node_pracs_queue
+    environment:
+      - db_service_name=api_gateway_db
+      - db_name=example_db
+      - db_retry_time=3000
+      - redis_url=redis://api_gateway_queue
+  mongo_db_nodepracs:
+    container_name: mongo_db_nodepracs
+    image: mongo
+    volumes:
+      - ./db:/data/db
+    ports:
+      - "27017:27017"
+  node_pracs_queue:
+     container_name: node_pracs_queue
+     image: "redis:alpine"
+     expose:
+      - 6379
+
+
+
+
+
