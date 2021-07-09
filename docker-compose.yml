@@ -14,7 +14,7 @@ services:
       - mongo_db_nodepracs
       - node_pracs_queue
     environment:
-      - db_service_name=api_gateway_db
+      - db_service_name=mongo_db_nodepracs
       - db_name=example_db
       - db_retry_time=3000
       - redis_url=redis://api_gateway_queue
