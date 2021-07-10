@@ -4,12 +4,15 @@
   "description": "",
   "main": "file1.js",
   "scripts": {
-    "dev": "node file1.js"
+    "dev": "nodemon --inspect=0.0.0.0:5858 file1.js",
+    "start": "nodemon --inspect=0.0.0.0:5858 file1.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
-    "mongoose": "^5.13.0"
+    "mongoose": "^5.13.0",
+    "nodemon": "^2.0.11",
+    "winston": "^3.3.3"
   }
 }

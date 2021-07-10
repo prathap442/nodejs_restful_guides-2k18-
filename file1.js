@@ -5,7 +5,13 @@ console.log("the mongo db url is .....")
 console.log(mongodbUrl)
 const mongoose = require('mongoose')
 const express = require('express')
+const logger = require('winston')
 const app = express()
+
+app.get('/prathap',(request, response)=>{
+  response.send("hello world") 
+})
+
 app.get('/',(request, response)=>{
    response.send("hello world") 
 })
@@ -40,11 +46,6 @@ db.on('connected',function(){
   app.listen(PORT,()=>{
      console.log(`Listening on the express port ${PORT}`) 
   })
-  const Cat = mongoose.model('Cat', { name: String });
-  let c1 = new Cat({name: "Kitty"})
-  c1.save().then((res)=>{
-    console.log('meow',res)
-  })
 })
 
 db.on('err', function(){
@@ -55,3 +56,18 @@ db.on('err', function(){
 })
 
 
+const courseSchema = {
+  name: String,
+  author: String,
+  tags: [String],
+  date: {type: Date, default: Date.now },
+  is_published: Boolean
+}
+
+
+
+const Course = mongoose.model('Course', courseSchema);
+//so now that we have created the Model we are ready to use it as the we create
+//the objects in the Object Oriented Programming
+const c1 = new Course({name: "Course1", author: "jay", tags: ['motivation'], is_published: true})
+c1.save().then((s1)=>{ console.log("successfully saved")})

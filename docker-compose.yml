@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: Dockerfile
     volumes:
-      - .:/usr/src/
+      - .:/usr/src/node-pracs
     ports:
       - "2525:2525"
       - "5858:5858"
@@ -17,7 +17,7 @@ services:
       - db_service_name=mongo_db_nodepracs
       - db_name=example_db
       - db_retry_time=3000
-      - redis_url=redis://api_gateway_queue
+      - redis_url=redis://node_pracs_queue
   mongo_db_nodepracs:
     container_name: mongo_db_nodepracs
     image: mongo
